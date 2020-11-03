@@ -51,4 +51,4 @@ const MoviePage = props => {
   );
 };
 
-export default MoviePage;
+export default withRouter(MoviePage);
