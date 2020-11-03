@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom"
 import FavoriteMoviesPage from './pages/favoritesMoviesPage'
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
+import UpcomingMoviesPage from './pages/upcomingMoviesPage'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <SiteHeader />
           <div className="container-fluid">
             <Switch>
+            <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} /> 
             <Route path="/reviews/:id" component={MovieReviewPage} />
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
             <Route path="/movies/:id" component={MoviePage} />
