@@ -6,19 +6,14 @@ import { Link, Route, withRouter } from "react-router-dom"
 import MovieReviews from "../components/movieReviews"
 
 const MoviePage = props => {
-  const { id } = props.match.params;
-  const [movie, setMovie] = useState(null);
-  useEffect(() => {
-    getMovie(id).then(movie => {
-      setMovie(movie);
-    });
-  }, [id]);
+    const { id } = props.match.params;
+    const [movie] = useMovie(id)
   return (
     <>
     {movie ? (
       <>
         <PageTemplate movie={movie}>
-          <MovieDetails movie={movie} />
+        <MovieDetails movie={movie} />
         </PageTemplate>
         <div className="row">
           <div className="col-12 ">
