@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
 import StubAPI from "../api/stubAPI";
 import PageTemplate from '../components/templateMovieListPage'
-import { getMovies } from "../api/tmdb-api";
+import { getUpcoming} from "../api/tmdb-api";
 
 const UpcomingMovieListPage = () => {
     const [movies, setMovies] = useState([]);
-    useEffect(() => {
-      fetch(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`)
-        .then(res => res.json())
-        .then(json => {
-          console.log(json)
-          return json.results
-        })
-        .then(movies => {
-          setMovies(movies);
-        });
-    }, []);
+  useEffect(() => {
+    getUpcoming().then(movies => {
+      setMovies(movies);
+    });
+  }, []);
 
   const addToFavorites = movieId => {
     setMovies(movies => {
